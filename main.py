@@ -4,6 +4,7 @@ import json
 from tkinter import *
 from tkinter import messagebox as mb
 
+
 def check_balance(login, password):
     url = 'http://my3.webcom.mobi/json/balance.php'
     headers = {'Content-type': 'text/json; charset=utf-8'}
@@ -58,17 +59,17 @@ def send_sms():
 
 window = Tk()
 window.title('Отправка СМС')
-window.geometry('500x300')
+window.geometry('300x200')
 
-Label(text='Номер получателя: ').pack()
+Label(text='Номер получателя в формате: 79*********').pack()
 receiver_entry = Entry()
-receiver_entry.pack()
+receiver_entry.pack(pady=10)
 
 Label(text='Введите текст СМС').pack()
 text_entry = Entry()
-text_entry.pack()
+text_entry.pack(pady=10)
 
 send_button = Button(text='Отправить СМС', command=send_sms)
-send_button.pack()
+send_button.pack(pady=10)
 
 window.mainloop()
