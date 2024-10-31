@@ -6,12 +6,14 @@ headers = {'Content-type': 'text/json; charset=utf-8'}
 
 data={'login': 'A',
       'password': 'parol'}
+try:
+    response = requests.post(url, data=json.dumps(data), headers=headers)
 
-response = requests.post(url, data=json.dumps(data), headers=headers)
-
-if response.status_code == 200:
-    response_data = response.json()
-    print(response_data)
-    print(f'Баланс: {response_data['money']} руб.')
-else:
-    print(f'Ошибка: {response.status_code}')
+    if response.status_code == 200:
+        response_data = response.json()
+        print(response_data)
+        print(f'Баланс: {response_data['money']} руб.')
+    else:
+        print(f'Ошибка: {response.status_code}')
+except Exception as e:
+    print(f'Произошла ошибка: {e}')
